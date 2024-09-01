@@ -129,7 +129,7 @@ public class BookService {
                 .orElseThrow(() -> new EntityNotFoundException("No book found with ID:: " + bookId));
         User user = ((User) connectedUser.getPrincipal());
 
-        //TODO check if the logged in user is the owner of the book
+        // check if the logged in user is the owner of the book
         if (!Objects.equals(book.getOwner().getId(), user.getId())) {
             throw new OperationNotPermittedException("You cannot update others books shareable status");
         }
